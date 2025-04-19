@@ -51,6 +51,7 @@
       display: flex;
       justify-content: space-between;
       margin: 20px 0;
+      gap: 10px;
     }
 
     .nav-buttons a,
@@ -63,8 +64,7 @@
       border-radius: 6px;
       text-decoration: none;
       text-align: center;
-      flex: 1;
-      margin: 0 5px;
+      display: block;
     }
 
     .nav-buttons a:hover,
@@ -72,9 +72,12 @@
       background-color: #0056b3;
     }
 
+    .nav-buttons a {
+      flex: 1;
+    }
+
     .homepage-btn {
       width: 100%;
-      display: block;
       margin-top: 10px;
     }
   </style>
