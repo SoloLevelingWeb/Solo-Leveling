@@ -1,85 +1,118 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contoh Web Responsif</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Web Page</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
       display: flex;
       justify-content: center;
     }
 
     .container {
+      width: 100%;
       max-width: 500px;
-      width: 100%;
-      padding: 16px;
+      padding: 20px;
+      background-color: #fff;
       box-sizing: border-box;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto;
     }
 
     h1 {
       text-align: center;
-      font-size: 24px;
-      margin-bottom: 12px;
+      color: #333;
     }
 
     p {
-      text-align: justify;
       font-size: 16px;
-      margin-bottom: 16px;
+      line-height: 1.6;
+      color: #555;
+      text-align: justify;
     }
 
-    .nav-button {
-      display: block;
+    .images {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .images img {
       width: 100%;
-      padding: 12px;
-      font-size: 16px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+
+    .nav-buttons a,
+    .homepage-btn {
       background-color: #007BFF;
       color: white;
       border: none;
-      border-radius: 8px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      text-decoration: none;
       text-align: center;
-      cursor: pointer;
-      margin-top: 20px;
+      flex: 1;
+      margin: 0 5px;
     }
 
-    .nav-button:hover {
+    .nav-buttons a:hover,
+    .homepage-btn:hover {
       background-color: #0056b3;
     }
 
-    #container-7f6b926e1bf322fbcf1e5d6c882bc5e7 {
-      margin: 20px 0;
+    .homepage-btn {
+      width: 100%;
+      display: block;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Judul Web Responsif</h1>
+    <h1>Welcome to My Web Page</h1>
     <p>
-      Ini adalah contoh paragraf pada web yang dirancang responsif untuk tampilan ponsel. Konten akan menyesuaikan dengan lebar layar dan memberikan pengalaman membaca yang nyaman.
+      This is a professional responsive website layout. It contains a header, a paragraph of content, and image gallery. 
+      This layout is designed to adapt to mobile screens with a maximum width of 500 pixels.
     </p>
 
-    <!-- Gambar Atas -->
-    <img src="1.jpeg" alt="Gambar Atas">
+    <div class="images">
+      <img src="1.jpg" alt="Image 1">
+      <img src="2.jpg" alt="Image 2">
+      <img src="3.jpg" alt="Image 3">
+    </div>
 
-    <!-- Script di Tengah -->
-    <script async src="//roastwearwritten.com/7f6b926e1bf322fbcf1e5d6c882bc5e7/invoke.js"></script>
-    <div id="container-7f6b926e1bf322fbcf1e5d6c882bc5e7"></div>
+    <div class="nav-buttons">
+      <a id="prev-chapter" href="#">Previous Chapter</a>
+      <a id="next-chapter" href="#">Next Chapter</a>
+    </div>
 
-    <!-- Gambar Bawah -->
-    <img src="1.jpeg" alt="Gambar Bawah">
-
-    <!-- Tombol Navigasi -->
-    <button class="nav-button" onclick="alert('Navigasi ditekan')">Navigasi</button>
+    <a id="homepage" class="homepage-btn" href="#">Homepage</a>
   </div>
+
+  <script>
+    fetch('domain.txt')
+      .then(response => response.text())
+      .then(domain => {
+        domain = domain.trim();
+        document.getElementById('prev-chapter').href = `https://${domain}/Solo-Leveling-Manga-Chapter-0.html`;
+        document.getElementById('next-chapter').href = `https://${domain}/Solo-Leveling-Manga-Chapter-2.html`;
+        document.getElementById('homepage').href = `https://${domain}/`;
+      })
+      .catch(error => {
+        console.error('Failed to load domain.txt:', error);
+      });
+  </script>
 </body>
 </html>
