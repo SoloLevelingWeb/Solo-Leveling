@@ -113,9 +113,9 @@
       .then(response => response.text())
       .then(domain => {
         domain = domain.trim();
-        document.getElementById('prev-chapter').href = `https://${domain}/Solo-Leveling-Manga-Chapter-0.html`;
-        document.getElementById('next-chapter').href = `https://${domain}/Solo-Leveling-Manga-Chapter-2.html`;
-        document.getElementById('homepage').href = `https://${domain}/`;
+        document.getElementById('prev-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-0.html`;
+        document.getElementById('next-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-2.html`;
+        document.getElementById('homepage').href = `${domain}/`;
       })
       .catch(error => {
         console.error('Failed to load domain.txt:', error);
