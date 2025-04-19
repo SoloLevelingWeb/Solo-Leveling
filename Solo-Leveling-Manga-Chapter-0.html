@@ -108,18 +108,25 @@
     <a id="homepage" class="homepage-btn" href="#">Homepage</a>
   </div>
 
-  <script>
-    fetch('domain.txt')
-      .then(response => response.text())
-      .then(domain => {
-        domain = domain.trim();
-        document.getElementById('prev-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-0.html`;
-        document.getElementById('next-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-2.html`;
-        document.getElementById('homepage').href = `${domain}/`;
-      })
-      .catch(error => {
-        console.error('Failed to load domain.txt:', error);
-      });
-  </script>
+ <script>
+  fetch('domain.txt')
+    .then(response => response.text())
+    .then(domain => {
+      domain = domain.trim();
+
+      // Tambahkan https:// hanya jika belum ada
+      if (!domain.startsWith('http')) {
+        domain = 'https://' + domain;
+      }
+
+      document.getElementById('prev-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-0.html`;
+      document.getElementById('next-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-2.html`;
+      document.getElementById('homepage').href = `${domain}/`;
+    })
+    .catch(error => {
+      console.error('Failed to load domain.txt:', error);
+    });
+</script>
+
 </body>
 </html>
