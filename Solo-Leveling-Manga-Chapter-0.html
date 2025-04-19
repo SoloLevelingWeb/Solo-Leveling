@@ -50,6 +50,12 @@
       width: 100%;
       height: auto;
       border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .images img.loaded {
+      opacity: 1;
     }
 
     .nav-buttons {
@@ -68,6 +74,7 @@
       border-radius: 6px;
       text-decoration: none;
       text-align: center;
+      display: block;
     }
 
     .nav-buttons a:hover,
@@ -80,7 +87,6 @@
     }
 
     .homepage-btn {
-      display: block;
       width: 100%;
       margin-top: 10px;
     }
@@ -95,9 +101,9 @@
     </p>
 
     <div class="images">
-      <img src="1.jpg" alt="Image 1">
-      <img src="2.jpg" alt="Image 2">
-      <img src="3.jpg" alt="Image 3">
+      <img src="1.jpg" alt="Image 1" loading="lazy">
+      <img src="2.jpg" alt="Image 2" loading="lazy">
+      <img src="3.jpg" alt="Image 3" loading="lazy">
     </div>
 
     <div class="nav-buttons">
@@ -108,25 +114,30 @@
     <a id="homepage" class="homepage-btn" href="#">Homepage</a>
   </div>
 
- <script>
-  fetch('domain.txt')
-    .then(response => response.text())
-    .then(domain => {
-      domain = domain.trim();
+  <script>
+    // Setup domain from domain.txt
+    fetch('domain.txt')
+      .then(response => response.text())
+      .then(domain => {
+        domain = domain.trim();
+        if (!domain.startsWith('http')) {
+          domain = 'https://' + domain;
+        }
+        document.getElementById('prev-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-0.html`;
+        document.getElementById('next-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-2.html`;
+        document.getElementById('homepage').href = `${domain}/`;
+      })
+      .catch(error => {
+        console.error('Failed to load domain.txt:', error);
+      });
 
-      // Tambahkan https:// hanya jika belum ada
-      if (!domain.startsWith('http')) {
-        domain = 'https://' + domain;
-      }
-
-      document.getElementById('prev-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-0.html`;
-      document.getElementById('next-chapter').href = `${domain}/Solo-Leveling-Manga-Chapter-2.html`;
-      document.getElementById('homepage').href = `${domain}/`;
-    })
-    .catch(error => {
-      console.error('Failed to load domain.txt:', error);
+    // Optional: add fade-in effect on image load
+    const images = document.querySelectorAll('.images img');
+    images.forEach(img => {
+      img.addEventListener('load', () => {
+        img.classList.add('loaded');
+      });
     });
-</script>
-
+  </script>
 </body>
 </html>
